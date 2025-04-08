@@ -5,21 +5,24 @@ import json
 import os
 import sys
 import re
+from colorama import init, Fore, Style
 
-paping_path = r"C:\Users\REPLACE_WITH_YOUR_WINDOWS_USERNAME\paping.exe"
+init() # ADDED TO INITIALIZE COLORAMA SO COLORS PROCESS FOR WINDOWS
+
+paping_path = r"C:\Users\alext\tcp.exe"
 
 if not os.path.exists(paping_path):
-    print(f"\033[91mError: 'paping.exe' not found at {paping_path}. Please check the path.\033[0m")
+    print(f"{Fore.RED}Error: 'paping.exe' not found at {paping_path}. Please check the path.{Style.RESET_ALL}")
     sys.exit(1)
 
-RESET = "\033[0m"
-TEXT_COLOR = "\033[97m"
-IP_COLOR = "\033[1;92m"
-TIME_COLOR = "\033[1;93m"
-PROTOCOL_COLOR = "\033[1;92m"
-PORT_COLOR = "\033[1;92m"
-ISP_COLOR = "\033[0;90m"
-ERROR_COLOR = "\033[91m"
+RESET = Style.RESET_ALL
+TEXT_COLOR = Fore.WHITE
+IP_COLOR = Fore.LIGHTGREEN_EX
+TIME_COLOR = Fore.LIGHTYELLOW_EX
+PROTOCOL_COLOR = Fore.LIGHTGREEN_EX
+PORT_COLOR = Fore.LIGHTGREEN_EX
+ISP_COLOR = Fore.LIGHTBLACK_EX
+ERROR_COLOR = Fore.RED
 
 def get_isp(ip):
     try:
