@@ -9,7 +9,7 @@ from colorama import init, Fore, Style
 
 init() # ADDED TO INITIALIZE COLORAMA SO COLORS PROCESS FOR WINDOWS
 
-paping_path = r"C:\Users\alext\tcp.exe"
+paping_path = r"C:\Users\REPLACEWITHYOURWINDOWSUSER\paping.exe"
 
 if not os.path.exists(paping_path):
     print(f"{Fore.RED}Error: 'paping.exe' not found at {paping_path}. Please check the path.{Style.RESET_ALL}")
@@ -23,6 +23,7 @@ PROTOCOL_COLOR = Fore.LIGHTGREEN_EX
 PORT_COLOR = Fore.LIGHTGREEN_EX
 ISP_COLOR = Fore.LIGHTBLACK_EX
 ERROR_COLOR = Fore.RED
+CONNECTING_COLOR = Fore.BLACK
 
 def get_isp(ip):
     try:
@@ -40,8 +41,6 @@ def parse_paping_output(line, isp):
         print(f"Connected to {IP_COLOR}{ip_part}{TEXT_COLOR} : time={TIME_COLOR}{time_part}ms{TEXT_COLOR} protocol={PROTOCOL_COLOR}{protocol_part}{TEXT_COLOR} port={PORT_COLOR}{port_part}{TEXT_COLOR} [ISP: {ISP_COLOR}{isp}{TEXT_COLOR}]{RESET}")
     elif "Connection timed out" in line:
         print(f"{ERROR_COLOR}{line}{RESET}")
-    else:
-        print(f"{ERROR_COLOR}Please Wait: {line}{RESET}")
 
 def custom_tcp_ping(ip, port=80):
     try:
